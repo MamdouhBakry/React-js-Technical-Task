@@ -1,0 +1,154 @@
+[
+    {
+        "id": "S1_id",
+        "title": "Singer 1",
+        "Alboums": [
+            {
+                "id": "S1_Al1_id",
+                "title": "S1_album1",
+                "songs": [
+                    {
+                        "id": "S1_Al1_Song1_id",
+                        "title": "S1_album1_song1",
+                        "price": 10
+                    },
+                    {
+                        "id": "S1_Al1_Song2_id",
+                        "title": "S1_album1_song2",
+                        "price": 20
+                    }
+                ]
+            },
+            {
+                "id": "S1_Al2_id",
+                "title": "S1_album2",
+                "songs": [
+                    {
+                        "id": "S1_Al2_Song1_id",
+                        "title": "S1_album2_song1",
+                        "price": 10
+                    },
+                    {
+                        "id": "S1_Al2_Song2_id",
+                        "title": "S1_album2_song2",
+                        "price": 20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "S2_id",
+        "title": "Singer 2",
+        "Alboums": [
+            {
+                "id": "S2_Al1_id",
+                "title": "S2_album1",
+                "songs": [
+                    {
+                        "id": "S2_Al1_Song1_id",
+                        "title": "S2_album1_song1",
+                        "price": 10
+                    },
+                    {
+                        "id": "S2_Al1_Song2_id",
+                        "title": "S2_album1_song2",
+                        "price": 20
+                    }
+                ]
+            },
+            {
+                "id": "S2_Al2_id",
+                "title": "S2_album2",
+                "songs": [
+                    {
+                        "id": "S2_Al2_Song1_id",
+                        "title": "S2_album2_song1",
+                        "price": 10
+                    },
+                    {
+                        "id": "S2_Al2_Song2_id",
+                        "title": "S2_album2_song2",
+                        "price": 20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "S3_id",
+        "title": "Singer 3",
+        "Alboums": [
+            {
+                "id": "S3_Al1_id",
+                "title": "S3_album1",
+                "songs": [
+                    {
+                        "id": "S3_Al1_Song1_id",
+                        "title": "S3_album1_song1",
+                        "price": 10
+                    },
+                    {
+                        "id": "S3_Al1_Song2_id",
+                        "title": "S3_album1_song2",
+                        "price": 20
+                    }
+                ]
+            },
+            {
+                "id": "S3_Al2_id",
+                "title": "S3_album2",
+                "songs": [
+                    {
+                        "id": "S3_Al2_Song1_id",
+                        "title": "S3_album2_song1",
+                        "price": 10
+                    },
+                    {
+                        "id": "S3_Al2_Song2_id",
+                        "title": "S3_album2_song2",
+                        "price": 20
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "S4_id",
+        "title": "Singer 4",
+        "Alboums": [
+            {
+                "id": "S4_Al1_id",
+                "title": "S4_album1",
+                "songs": [
+                    {
+                        "id": "S4_Al1_Song1_id",
+                        "title": "S4_album1_song1",
+                        "price": 10
+                    },
+                    {
+                        "id": "S4_Al1_Song2_id",
+                        "title": "S4_album1_song2",
+                        "price": 20
+                    }
+                ]
+            },
+            {
+                "id": "S4_Al2_id",
+                "title": "S4_album2",
+                "songs": [
+                    {
+                        "id": "S4_Al2_Song1_id",
+                        "title": "S4_album2_song1",
+                        "price": 10
+                    },
+                    {
+                        "id": "S4_Al2_Song2_id",
+                        "title": "S4_album2_song2",
+                        "price": 20
+                    }
+                ]
+            }
+        ]
+    }
+]

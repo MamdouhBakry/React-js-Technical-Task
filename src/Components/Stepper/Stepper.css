@@ -1,0 +1,12 @@
+.btnGroup1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btnGroup2 {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
