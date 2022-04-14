@@ -9,6 +9,7 @@ import Singers from "../Singers/Singers";
 import "./Stepper.css";
 import Albums from "../Albums/Albums";
 import Songs from "../Songs/Songs";
+import SubmitForm from "../SubmitFrom/SubmitForm";
 
 function getSteps() {
     return [
@@ -19,18 +20,28 @@ function getSteps() {
     ];
 }
 
-function getStepContent(step) {
+function getStepContent(step, handleNext, steps, handleBack) {
     switch (step) {
         case 0:
             return (
                 <>
-                    <Singers />
+                    <Singers
+                        handleNext={handleNext}
+                        steps={steps}
+                        activeStep={step}
+                        handleBack={handleBack}
+                    />
                 </>
             );
         case 1:
             return (
                 <>
-                    <Albums />
+                    <Albums
+                        handleNext={handleNext}
+                        steps={steps}
+                        activeStep={step}
+                        handleBack={handleBack}
+                    />
                 </>
             );
 
@@ -39,50 +50,23 @@ function getStepContent(step) {
         case 2:
             return (
                 <>
-                    <Songs />
+                    <Songs
+                        handleNext={handleNext}
+                        steps={steps}
+                        activeStep={step}
+                        handleBack={handleBack}
+                    />
                 </>
             );
 
         case 3:
             return (
-                <>
-                    <TextField
-                        id="Name"
-                        label="Name"
-                        variant="outlined"
-                        placeholder="Enter Your Name"
-                        fullWidth
-                        margin="normal"
-                        name="name"
-                    />
-                    <TextField
-                        id="email"
-                        label="E-mail"
-                        variant="outlined"
-                        placeholder="Enter Your E-mail Address"
-                        fullWidth
-                        margin="normal"
-                        name="emailAddress"
-                    />
-                    <TextField
-                        id="phone-number"
-                        label="Phone Number"
-                        variant="outlined"
-                        placeholder="Enter Your Phone Number"
-                        fullWidth
-                        margin="normal"
-                        name="phoneNumber"
-                    />
-                    {/* <TextField
-                        id="alternate-phone"
-                        label="Alternate Phone"
-                        variant="outlined"
-                        placeholder="Enter Your Alternate Phone"
-                        fullWidth
-                        margin="normal"
-                        name="alternatePhone"
-                    /> */}
-                </>
+                <SubmitForm
+                    handleNext={handleNext}
+                    steps={steps}
+                    activeStep={step}
+                    handleBack={handleBack}
+                />
             );
         default:
             return "unknown step";
@@ -113,6 +97,9 @@ const LinaerStepper = () => {
     const handleReset = () => {
         setActiveStep(0);
     };
+    const logFunc = () => {
+        console.log("hello from log function");
+    }
 
     return (
         <div className="container mt-5">
@@ -140,24 +127,10 @@ const LinaerStepper = () => {
                     </React.Fragment>
                 ) : (
                     <>
-                        <div className="container my-4">{getStepContent(activeStep)}</div>
-                        <div className="btnGroup2">
-                            <Button
+                        <div className="container my-4">{
+                            getStepContent(activeStep, handleNext, steps, handleBack)
+                        }</div>
 
-                                disabled={activeStep === 0}
-                                onClick={handleBack}
-                            >
-                                back
-                            </Button>
-                            <Button
-
-                                variant="contained"
-                                color="primary"
-                                onClick={handleNext}
-                            >
-                                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                            </Button>
-                        </div>
                     </>
                 )}
         </div>

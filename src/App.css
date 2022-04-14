@@ -28,3 +28,9 @@ main {
     border-radius: 5px;
     padding: 15px;
 }
+
+.btnGroup2 {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
