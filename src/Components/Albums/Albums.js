@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ItemList from '../List/ItemList';
 import { fetchAlbumSongs } from "../../Store/Actions/singers";
+import { Button } from "@mui/material";
 
 function Albums(props) {
     const [checked, setChecked] = React.useState([]);
@@ -22,6 +23,33 @@ function Albums(props) {
     return (
         <>
             <ItemList itemList={props.AlbumList} handleToggle={handleToggle} checked={checked} />
+            <div className="btnGroup2">
+                <Button
+
+                    disabled={props.activeStep === 0}
+                    onClick={props.handleBack}
+                >
+                    back
+                </Button>
+                {
+                    checked.length === 0 ? (<Button
+                        variant="contained"
+                        color="primary"
+                        onClick={props.handleNext}
+                        disabled
+                    >
+                        {props.activeStep === props.steps.length - 1 ? "SUBMIT" : "Next"}
+                    </Button>)
+                        : (<Button
+                            variant="contained"
+                            color="primary"
+                            onClick={props.handleNext}
+
+                        >
+                            {props.activeStep === props.steps.length - 1 ? "SUBMIT" : "Next"}
+                        </Button>)
+                }
+            </div>
         </>
     )
 }

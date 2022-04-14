@@ -9,6 +9,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import "./Songs.css";
+import { Button } from '@mui/material';
 
 function Songs(props) {
     const [checked, setChecked] = React.useState([]);
@@ -55,6 +56,33 @@ function Songs(props) {
                     }) : ""
                 }
             </List>
+            <div className="btnGroup2">
+                <Button
+
+                    disabled={props.activeStep === 0}
+                    onClick={props.handleBack}
+                >
+                    back
+                </Button>
+                {
+                    checked.length === 0 ? (<Button
+                        variant="contained"
+                        color="primary"
+                        onClick={props.handleNext}
+                        disabled
+                    >
+                        {props.activeStep === props.steps.length - 1 ? "SUBMIT" : "Next"}
+                    </Button>)
+                        : (<Button
+                            variant="contained"
+                            color="primary"
+                            onClick={props.handleNext}
+
+                        >
+                            {props.activeStep === props.steps.length - 1 ? "SUBMIT" : "Next"}
+                        </Button>)
+                }
+            </div>
         </>
     )
 }
