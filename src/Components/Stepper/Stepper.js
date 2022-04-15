@@ -4,12 +4,12 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import TextField from "@mui/material/TextField";
 import Singers from "../Singers/Singers";
 import "./Stepper.css";
 import Albums from "../Albums/Albums";
 import Songs from "../Songs/Songs";
 import SubmitForm from "../SubmitFrom/SubmitForm";
+import OrderDetails from "../OrderDetails/OrderDetails";
 
 function getSteps() {
     return [
@@ -118,11 +118,12 @@ const LinaerStepper = () => {
             {
                 activeStep === steps.length ? (
                     <React.Fragment>
-                        <div className="btnGroup1">
-                            <Typography className="text-center">
-                                All steps completed - you&apos;re finished
-                            </Typography>
-                            <Button onClick={handleReset}>Reset</Button>
+                        <div className="btnGroup1 text-center">
+                            <Typography> All steps completed Click the Button to Show Your Order Details</Typography>
+                            <div className="py-4">
+                                <OrderDetails handleReset={handleReset} />
+                            </div>
+                            {/* <Button onClick={handleReset}>Reset</Button> */}
                         </div>
                     </React.Fragment>
                 ) : (

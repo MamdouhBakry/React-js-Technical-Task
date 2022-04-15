@@ -12,10 +12,12 @@ export const fetchAlbums = (singerIds) => {
     console.log("ids", singerIds);
     return (dispatch) => {
         const selectedAlbums = [];
+        const selectedSingers = [];
         let count = 0, amount = 0;
         singerIds.map(id => {
             singerList.filter((singer) => {
                 if (id === singer.id) {
+                    selectedSingers.push(singer.title);
                     singer.Alboums.map(alboum => {
                         count += alboum.songs.length;
                         alboum.songs.map(song => {
@@ -37,6 +39,8 @@ export const fetchAlbums = (singerIds) => {
                 amount: amount
             }
         })
+        localStorage.setItem("selectedSingers", selectedSingers);
+
     }
 }
 
@@ -76,6 +80,7 @@ export const fetchAlbumSongs = (albumIds) => {
 export const fetchSongsDetails = (songIds) => {
     return (dispatch) => {
         let count = 0, amount = 0;
+        let SelectedSongs = [];
         songIds.map(id => {
             singerList.map(singer => {
                 singer.Alboums.map(alboum => {
@@ -83,6 +88,7 @@ export const fetchSongsDetails = (songIds) => {
                         if (song.id === id) {
                             count++;
                             amount += song.price;
+                            SelectedSongs.push(song);
                         }
                     })
                 })
@@ -92,9 +98,10 @@ export const fetchSongsDetails = (songIds) => {
             type: GET_SONGS_COUNT_AMOUNT,
             data: {
                 count: count,
-                amount: amount
+                amount: amount,
+                SelectedSongs: SelectedSongs
             }
         })
-
+        localStorage.setItem("SelectedSongs", JSON.stringify(SelectedSongs));
     }
 }
