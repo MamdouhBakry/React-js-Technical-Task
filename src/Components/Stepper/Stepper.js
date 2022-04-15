@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Singers from "../Singers/Singers";
 import "./Stepper.css";
@@ -10,7 +9,8 @@ import Albums from "../Albums/Albums";
 import Songs from "../Songs/Songs";
 import SubmitForm from "../SubmitFrom/SubmitForm";
 import OrderDetails from "../OrderDetails/OrderDetails";
-
+import { clearStepper } from "../../Store/Actions/singers";
+import { connect } from "react-redux";
 function getSteps() {
     return [
         "Select Singers",
@@ -73,7 +73,7 @@ function getStepContent(step, handleNext, steps, handleBack) {
     }
 }
 
-const LinaerStepper = () => {
+const LinaerStepper = (props) => {
     const [activeStep, setActiveStep] = useState(0);
     const [skippedSteps, setSkippedSteps] = useState([]);
     const steps = getSteps();
@@ -96,6 +96,7 @@ const LinaerStepper = () => {
     };
     const handleReset = () => {
         setActiveStep(0);
+        props.clearStepper();
     };
     const logFunc = () => {
         console.log("hello from log function");
@@ -121,7 +122,7 @@ const LinaerStepper = () => {
                         <div className="btnGroup1 text-center">
                             <Typography> All steps completed Click the Button to Show Your Order Details</Typography>
                             <div className="py-4">
-                                <OrderDetails handleReset={handleReset} />
+                                <OrderDetails activeStep={activeStep} handleBack={handleBack} handleReset={handleReset} />
                             </div>
                             {/* <Button onClick={handleReset}>Reset</Button> */}
                         </div>
@@ -138,4 +139,9 @@ const LinaerStepper = () => {
     );
 };
 
-export default LinaerStepper;
+
+export default connect((state) => {
+    return {
+        singerList: state.singerList.singers
+    }
+}, { clearStepper })(LinaerStepper)

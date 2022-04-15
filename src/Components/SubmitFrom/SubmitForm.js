@@ -141,17 +141,6 @@ function SubmitForm(props) {
                             {props.activeStep === props.steps.length - 1 ? "SUBMIT" : "Next"}
                         </Button>)
                 }
-                {
-                    props.activeStep === props.steps.length ? (
-
-                        <div className="btnGroup1">
-                            <Typography className="text-center">
-                                All steps completed - you&apos;re finished
-                            </Typography>
-                            <Button onClick={props.handleReset}>Reset</Button>
-                        </div>
-                    ) : null
-                }
             </div>
         </div>
     )

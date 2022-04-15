@@ -5,7 +5,12 @@ import ItemList from "../List/ItemList";
 import "./Singers.css";
 function Singers(props) {
 
-    const [checked, setChecked] = React.useState([]);
+    let selectedSingers = JSON.parse(localStorage.getItem("selectedSingers"));
+    let selectedSingersIds = [];
+    selectedSingers && selectedSingers.map(singer => {
+        selectedSingersIds.push(singer.id);
+    })
+    const [checked, setChecked] = React.useState(selectedSingersIds ? selectedSingersIds : []);
     console.log(checked);
     const { handleNext, steps, activeStep, handleBack } = props
 
@@ -21,11 +26,11 @@ function Singers(props) {
 
         props.fetchAlbums(newChecked);
         setChecked(newChecked);
-        // localStorage.setItem("checkedItems", [newChecked]);
     };
 
     React.useEffect(() => {
         props.fetchSingers();
+        props.fetchAlbums(checked);
         console.log(props.singerList)
     }, [])
     return (
