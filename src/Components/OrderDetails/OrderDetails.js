@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
 
 function OrderDetails(props) {
-    let selectedSingers = localStorage.getItem("selectedSingers").split(',');
+    let selectedSingers = JSON.parse(localStorage.getItem("selectedSingers"));
     let SelectedSongs = JSON.parse(localStorage.getItem("SelectedSongs"));
     let selectedAlbums = JSON.parse(localStorage.getItem("selectedAlbums"));
     let personalInfo = JSON.parse(localStorage.getItem("personalInfo"));
-    console.log(selectedSingers, SelectedSongs, selectedAlbums, personalInfo)
+
     return (
         <>
-
             <button type="button" className="btn btn-primary w-25 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Show Order Details
             </button>
@@ -19,9 +19,9 @@ function OrderDetails(props) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">Order Details</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button onClick={props.handleReset} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div className="modal-body">
+                        <div className="modal-body text-start">
                             <div className="border border-3 border-secondary p-3">
                                 <h2>Personal information</h2>
                                 <p>Name : {personalInfo.name}</p>
@@ -32,7 +32,7 @@ function OrderDetails(props) {
                             <div className="border border-3 border-secondary p-3">
                                 <h2>All Selected Singers</h2>
                                 {selectedSingers.map(singer => (
-                                    <p>{singer}</p>
+                                    <p>{singer.title}</p>
                                 ))}
                             </div>
                             <hr />
@@ -49,6 +49,12 @@ function OrderDetails(props) {
                                     <p>{song.title}</p>
                                 ))}
                             </div>
+                            <hr />
+                            <div className="border border-3 border-secondary p-3">
+                                <h2>Selected Songs Price and Count</h2>
+                                <p>Number of Songs : {props.count}</p>
+                                <p>Total Songs Price : {props.amount}</p>
+                            </div>
                         </div>
                         <div className="modal-footer">
                             <button onClick={props.handleReset} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -61,4 +67,9 @@ function OrderDetails(props) {
     )
 }
 
-export default OrderDetails
+export default connect((state) => {
+    return {
+        count: state.singerList.count,
+        amount: state.singerList.amount,
+    }
+}, {})(OrderDetails)

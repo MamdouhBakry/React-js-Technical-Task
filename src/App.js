@@ -1,6 +1,5 @@
 import './App.css';
 import LinaerStepper from './Components/Stepper/Stepper';
-import MultiStepForm from "./Components/MultiStepForm/MultiStepForm";
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import { Provider } from 'react-redux';
@@ -16,7 +15,6 @@ function App() {
           <div className="row my-5">
             <span className="col-10 stepper card">
               <LinaerStepper />
-              {/* <MultiStepForm /> */}
             </span>
             <span className="col-2 amount">
               <Count_Amount />

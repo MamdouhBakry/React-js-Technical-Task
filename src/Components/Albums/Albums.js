@@ -4,10 +4,14 @@ import ItemList from '../List/ItemList';
 import { fetchAlbumSongs } from "../../Store/Actions/singers";
 
 function Albums(props) {
-    const [checked, setChecked] = React.useState([]);
+
+    let selectedAlbums = JSON.parse(localStorage.getItem("selectedAlbums"));
+    let selectedAlbumsIds = [];
+    selectedAlbums && selectedAlbums.map(singer => {
+        selectedAlbumsIds.push(singer.id);
+    })
+    const [checked, setChecked] = React.useState(selectedAlbumsIds ? selectedAlbumsIds : []);
     const { handleNext, steps, activeStep, handleBack } = props;
-    localStorage.setItem("selectedAlbums", JSON.stringify(props.AlbumList));
-    console.log(props.AlbumList);
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
         const newChecked = [...checked];
@@ -21,6 +25,9 @@ function Albums(props) {
         props.fetchAlbumSongs(newChecked);
 
     };
+    useEffect(() => {
+        props.fetchAlbumSongs(checked);
+    }, [])
     return (
         <>
             <ItemList

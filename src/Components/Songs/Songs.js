@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchSongsDetails } from "../../Store/Actions/singers";
 import ItemList from '../List/ItemList';
 import "./Songs.css";
 
 function Songs(props) {
-    const [checked, setChecked] = React.useState([]);
+    let SelectedSongs = JSON.parse(localStorage.getItem("SelectedSongs"));
+    let SelectedSongsIds = [];
+    SelectedSongs && SelectedSongs.map(singer => {
+        SelectedSongsIds.push(singer.id);
+    })
+    const [checked, setChecked] = React.useState(SelectedSongsIds ? SelectedSongsIds : []);
     const { handleNext, steps, activeStep, handleBack } = props;
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -20,6 +25,10 @@ function Songs(props) {
         props.fetchSongsDetails(newChecked);
 
     };
+    useEffect(() => {
+        props.fetchSongsDetails(checked);
+
+    }, [])
     return (
         <>
             <ItemList

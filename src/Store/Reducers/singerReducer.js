@@ -1,4 +1,4 @@
-import { GET_ALBUMS_SONGS, GET_ALL_SINGERS, GET_SINGER_ALBUMS, GET_SONGS_COUNT_AMOUNT } from "../Actions/types";
+import { CLEAR_STEPPER, GET_ALBUMS_SONGS, GET_ALL_SINGERS, GET_SINGER_ALBUMS, GET_SONGS_COUNT_AMOUNT } from "../Actions/types";
 
 export const singersReducer = (state = {}, action) => {
 
@@ -27,6 +27,8 @@ export const singersReducer = (state = {}, action) => {
                 count: action.data.count,
                 amount: action.data.amount
             }
+        case CLEAR_STEPPER:
+            return state;
         default:
             return state
 
