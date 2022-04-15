@@ -56,6 +56,7 @@ function SubmitForm(props) {
     }
     const { values, errors, dirty, handleOnChange } = useForm(stateSchema, stateValidatorSchema);
     const { name, emailAddress, phoneNumber } = values;
+    localStorage.setItem("personalInfo", JSON.stringify({ name, emailAddress, phoneNumber }));
     return (
         <div className={classes.mainContent}>
             <Typography variant="h5" style={{ color: "#999", textAlign: "center", marginTop: "10px" }}>
@@ -139,6 +140,17 @@ function SubmitForm(props) {
                         >
                             {props.activeStep === props.steps.length - 1 ? "SUBMIT" : "Next"}
                         </Button>)
+                }
+                {
+                    props.activeStep === props.steps.length ? (
+
+                        <div className="btnGroup1">
+                            <Typography className="text-center">
+                                All steps completed - you&apos;re finished
+                            </Typography>
+                            <Button onClick={props.handleReset}>Reset</Button>
+                        </div>
+                    ) : null
                 }
             </div>
         </div>
